@@ -1,0 +1,59 @@
+{% extends 'main.html' %}
+
+{% load static%}
+{% block content%}
+
+
+
+<style>
+    .thumbnail{
+        margin-right: 20px;
+      }
+</style>
+
+<div class=" container col-sm-12 col-md-10 col-md-offset-1">
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">Price</th>
+            <th scope="col"> Quantity</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+    {% for item in items%}
+          <tr>
+            <td>{{item.product.name}}</td>
+            <td>Rs. {{item.product.price| floatformat:2}}</td>
+            <td  style="display:flex;">{{item.quantity}}  &nbsp;
+                 <span style="display:flex;flex-direction:column">
+                    <img data-product = "{{item.product.id}}" data-action = "add"   class="updatecart" src="{% static 'images/arrowup.png' %}" style="width:15px;margin-bottom:4px;cursor:pointer"/>
+                    <img data-product = "{{item.product.id}}" data-action = "remove" class="updatecart"  src="{% static 'images/arrowdown.png' %}" style="width:15px;cursor:pointer"/>
+                </span> 
+           </td>
+            <td>Rs.{{item.get_total | floatformat:2}}</td>
+          </tr>
+{% endfor%}
+<tr>
+  <td></td>
+  <td></td>
+  <td><b>Total Items</b></td>
+  <td>{{order.get_items_quantity}}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td><b>Total Price</b></td>
+    <td>{{order.get_items_price}}</td>
+    </tr>
+        </tbody>
+      </table>
+    </div>
+    <script>
+      user = "{{request.user}}"
+    </script>
+{% endblock content%}
+
+
+

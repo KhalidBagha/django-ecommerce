@@ -1,0 +1,150 @@
+ {% extends 'main.html' %}
+
+ {% block content%}
+
+ <div class="container py-5">
+  <div class="row">
+
+      <div class="col-lg-3">
+          <h1 class="h2 pb-4">Categories</h1>
+          <ul class="list-unstyled templatemo-accordion">
+              <li class="pb-3">
+                  <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                      Gender
+                      <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+                  </a>
+                  <ul class="collapse show list-unstyled pl-3">
+                      <li><a class="text-decoration-none" href="#">Men</a></li>
+                      <li><a class="text-decoration-none" href="#">Women</a></li>
+                  </ul>
+              </li>
+              <li class="pb-3">
+                  <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                      Sale
+                      <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                  </a>
+                  <ul id="collapseTwo" class="collapse list-unstyled pl-3">
+                      <li><a class="text-decoration-none" href="#">Sport</a></li>
+                      <li><a class="text-decoration-none" href="#">Luxury</a></li>
+                  </ul>
+              </li>
+              <li class="pb-3">
+                  <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                      Product
+                      <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                  </a>
+                  <ul id="collapseThree" class="collapse list-unstyled pl-3">
+                      <li><a class="text-decoration-none" href="#">Bag</a></li>
+                      <li><a class="text-decoration-none" href="#">Sweather</a></li>
+                      <li><a class="text-decoration-none" href="#">Sunglass</a></li>
+                  </ul>
+              </li>
+          </ul>
+      </div>
+
+      <div class="col-lg-9">
+          <div class="row">
+              <div class="col-md-6">
+                  <ul class="list-inline shop-top-menu pb-3 pt-1">
+                      <li class="list-inline-item">
+                          <a class="h3 text-dark text-decoration-none mr-3" href="#">All</a>
+                      </li>
+                      <li class="list-inline-item">
+                          <a class="h3 text-dark text-decoration-none mr-3" href="#">Men's</a>
+                      </li>
+                      <li class="list-inline-item">
+                          <a class="h3 text-dark text-decoration-none" href="#">Women's</a>
+                      </li>
+                  </ul>
+              </div>
+              <div class="col-md-6 pb-4">
+                  <div class="d-flex">
+                      <select class="form-control">
+                          <option>Featured</option>
+                          <option>A to Z</option>
+                          <option>Item</option>
+                      </select>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+            {% csrf_token %}
+
+            {% for product in products%}
+              <div class="col-md-4">
+                  <div class="card mb-4 product-wap rounded-0">
+                      <div class="card rounded-0">
+                          <img class="card-img rounded-0 img-fluid" src="{{product.imageURL}}">
+                          <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                              <ul class="list-unstyled">
+                                  <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li>
+                                  <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
+                                  <li><button data-product = "{{product.id}}" data-action = "add"  class="btn btn-success text-white mt-2  updatecart" ><i class="fas fa-cart-plus"></i></button></li>
+                              </ul>
+                          </div>
+                      </div>
+                      <div class="card-body">
+                          <a href="shop-single.html" class="h3 text-decoration-none">{{product.name}}</a>
+                          <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                              <li>M/L/X/XL</li>
+                              <li class="pt-2">
+                                  <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+                                  <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+                                  <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+                                  <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+                                  <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+                              </li>
+                          </ul>
+                          <ul class="list-unstyled d-flex justify-content-center mb-1">
+                              <li>
+                                  <i class="text-warning fa fa-star"></i>
+                                  <i class="text-warning fa fa-star"></i>
+                                  <i class="text-warning fa fa-star"></i>
+                                  <i class="text-muted fa fa-star"></i>
+                                  <i class="text-muted fa fa-star"></i>
+                              </li>
+                          </ul>
+                          <p class="text-center mb-0">Rs. {{product.price}}</p>
+                      </div>
+                  </div>
+              </div>
+              {% endfor %}  
+              </div>
+          </div>
+
+      </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<script>
+  var user = "{{request.user}}"
+  
+</script>
+</div>
+
+
+<svg _ngcontent-c12="" xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1" style="enable-background:new 0 0 688.1 478;" version="1.1" viewBox="0 0 688.1 478" x="0px" xmlns="http://www.w3.org/2000/svg" y="0px"><style _ngcontent-c12="" type="text/css"> .st0{fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} .st1{fill:#8A5DC8;} .st2{fill:#020202;} .st3{font-family:'Roboto-Medium';} .st4{font-size:14px;} .st5{fill:none;stroke:#000000;stroke-width:2.9788;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} .st6{fill:none;stroke:#8A5DC8;stroke-width:2.979;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} .st7{fill:none;stroke:#000000;stroke-width:2.979;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+</style><title _ngcontent-c12="">development process</title><path _ngcontent-c12="" class="st0" d="M211.7,176.7"></path><circle _ngcontent-c12="" cx="74.1" cy="176.5" r="7.6"></circle><rect _ngcontent-c12="" class="mockup-1-bullet" height="22" width="1" x="210.7" y="29.1"></rect><rect _ngcontent-c12="" class="ideation-bullet" height="22" width="1" x="210.7" y="165.5"></rect><rect _ngcontent-c12="" class="st1 discuss-2-bullet" height="22" width="1" x="388.3" y="165.5"></rect><rect _ngcontent-c12="" class="st1 discuss-1-bullet" height="22" width="1" x="300.3" y="165.5"></rect><rect _ngcontent-c12="" class="idea-bullet" height="22" width="1" x="107" y="165.5"></rect><path _ngcontent-c12="" class="st0" d="M424.5,174.3"></path><path _ngcontent-c12="" class="st2 big-line-arrow" d="M281.6,411.2c-0.2-0.3-0.3-0.6-0.5-0.9c-0.6,0.8-1.5,1.4-2.4,1.8c0.2,0.3,0.4,0.6,0.5,1l-8.8,1.2l20.9,12.1
+	l-6.5-23.3L281.6,411.2z"></path><rect _ngcontent-c12="" class="testing-bullet" height="22" width="1" x="338.5" y="297.6"></rect><rect _ngcontent-c12="" class="design-bullet" height="22" width="1" x="338.5" y="434.1"></rect><rect _ngcontent-c12="" class="mockup-2-bullet" height="22" width="1" x="300.7" y="29.1"></rect><rect _ngcontent-c12="" class="mockup-3-bullet" height="22" width="1" x="387.7" y="29.1"></rect><rect _ngcontent-c12="" class="learning-bullet" height="1" width="22" x="260" y="377"></rect><rect _ngcontent-c12="" class="prototype-bullet" height="1" width="22" x="397" y="377"></rect><path _ngcontent-c12="" class="line-4-arrow" d="M659.5,434.9l4.4,7.6h-1.1c0.3,1,0.3,2,0,3h1.1l-4.4,7.6l22.4-9.1L659.5,434.9z"></path><rect _ngcontent-c12="" class="refinement-bullet" height="22" width="1" x="545" y="433"></rect><text _ngcontent-c12="" class="st3 st4 mockup-1" transform="matrix(1 0 0 1 180.4093 23.1567)">Mockup 1</text><text _ngcontent-c12="" class="st3 st4 mockup-2" transform="matrix(1 0 0 1 270.1017 23.1567)">Mockup 2</text><text _ngcontent-c12="" class="st3 st4 mockup-3" transform="matrix(1 0 0 1 354.1017 23.1567)">Mockup 3</text><text _ngcontent-c12="" class="st3 st4" transform="matrix(1 0 0 1 8.493 181.1567)">Problem</text><text _ngcontent-c12="" class="st3 st4 idea" transform="matrix(1 0 0 1 95.159 203.8234)">Idea</text><text _ngcontent-c12="" class="st3 st4 ideation" transform="matrix(1 0 0 1 185.159 203.8236)">Ideation</text><text _ngcontent-c12="" class="st3 st4 discuss-1" transform="matrix(1 0 0 1 275.7962 203.8237)">Discuss</text><text _ngcontent-c12="" class="st3 st4 discuss-2" transform="matrix(1 0 0 1 363.7962 203.8237)">Discuss</text><text _ngcontent-c12="" class="st3 st4 testing" transform="matrix(1 0 0 1 283.7496 292.8237)">Testing &amp; Metrics</text><text _ngcontent-c12="" class="st3 st4 learning" transform="matrix(1 0 0 1 197.7496 380.8237)">Learning</text><text _ngcontent-c12="" class="st3 st4 prototype" transform="matrix(1 0 0 1 422.7496 380.8237)">Prototype</text><text _ngcontent-c12="" class="st3 st4 design" transform="matrix(1 0 0 1 316.7496 470.8237)">Design</text><text _ngcontent-c12="" class="st3 st4 refinement" transform="matrix(1 0 0 1 481.7496 470.8237)">Design Refinement</text><path _ngcontent-c12="" class="st5" d="M339,308.6"></path><path _ngcontent-c12="" class="st5" d="M339,308.6"></path><path _ngcontent-c12="" class="st5 big-line" d="M280.2,411.8c-6-10.1-9.4-21.9-9.4-34.5c0-37.8,30.9-68.4,68.9-68.4s68.9,30.6,68.9,68.4s-30.9,68.4-68.9,68.4
+	h2l-159-0.1c-1.2,0-2.4,0.1-3.7,0.1c-55.5,0-100.5-45-100.5-100.5c0-54.3,43-98.5,96.8-100.4l308.3-0.1c19.4,0,35.2-15.7,35.2-35.2
+	s-15.7-35.2-35.2-35.2h-0.3h-58.8"></path><path _ngcontent-c12="" class="st6 line-2" d="M238.5,142.6c-6-10.1-9.4-21.9-9.4-34.5c0-37.8,30.9-68.4,68.9-68.4S367,70.3,367,108.1s-30.9,68.4-68.9,68.4h2
+	l-47.9,0"></path><path _ngcontent-c12="" class="st5 line-1" d="M74.1,176.5l138.6,0h-2c38.1,0,68.9-30.6,68.9-68.4s-30.9-68.4-68.9-68.4s-68.9,30.6-68.9,68.4
+	c0,12.6,3.4,24.4,9.4,34.5"></path><path _ngcontent-c12="" class="st7 line-3" d="M355.8,176.5h31.7l2.6,0h-2c38.1,0,68.9-30.6,68.9-68.4S426.1,39.7,388,39.7s-68.9,30.6-68.9,68.4
+	c0,12.6,3.4,24.4,9.4,34.5"></path><line _ngcontent-c12="" class="st0 line-4" x1="405.6" x2="664.5" y1="444.1" y2="444.1"></line></svg>
+
+
+
+{% endblock content%}
